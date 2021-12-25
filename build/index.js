@@ -1,11 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-// const app = express()
-// const port = 3000
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`)
-// })
-console.log('dadad');
+exports.SERVICE_APPLICATION = exports.ServiceManager = void 0;
+const ServiceManager_1 = __importDefault(require("./services/ServiceManager"));
+exports.ServiceManager = ServiceManager_1.default;
+const services_1 = require("./services");
+Object.defineProperty(exports, "SERVICE_APPLICATION", { enumerable: true, get: function () { return services_1.SERVICE_APPLICATION; } });

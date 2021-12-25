@@ -22,5 +22,5 @@ export default class ServiceManager {
      *
      * @param serviceName - the name of the service. All services begin with `SERVICE_`
      */
-    static get<T, P>(serviceName: string, params: P): T | null;
+    static get<T, P = null>(serviceName: string, params?: P): Promise<T | null>;
 }

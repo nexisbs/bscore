@@ -35,7 +35,7 @@ describe('Application service', () => {
     it('Should test validation middleware', () => __awaiter(void 0, void 0, void 0, function* () {
         let expressServer = yield ServiceManager_1.default.get(services_1.SERVICE_APPLICATION);
         expressServer.createRouter('/test', (router) => {
-            router.post('/test', (0, __1.ValidareMiddleware)(joi_1.default.object({ username: joi_1.default.string() })), (req, res) => {
+            router.post('/test', (0, __1.ValidateMiddleware)(joi_1.default.object({ username: joi_1.default.string() })), (req, res) => {
                 res.json({});
             });
         });

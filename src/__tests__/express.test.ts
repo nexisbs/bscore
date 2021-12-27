@@ -1,4 +1,4 @@
-import { ValidareMiddleware } from ".."
+import { ValidateMiddleware } from ".."
 import joi from 'joi';
 import supertest from 'supertest';
 import { SERVICE_APPLICATION } from "../services";
@@ -32,7 +32,7 @@ describe('Application service', () => {
 
         expressServer.createRouter('/test', ( router ) => {
 
-            router.post('/test', ValidareMiddleware(joi.object({username: joi.string()})) , (req, res) => {
+            router.post('/test', ValidateMiddleware(joi.object({username: joi.string()})) , (req, res) => {
                 res.json({});
             })
         })

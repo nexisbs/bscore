@@ -16,6 +16,8 @@ const express_1 = __importDefault(require("express"));
 class Application {
     constructor() {
         this.app = (0, express_1.default)();
+        this.app.use(express_1.default.json());
+        this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     /**
      * Returns the express application
@@ -36,6 +38,14 @@ class Application {
         let router = express_1.default.Router();
         routerFn(router);
         this.app.use(basePath, router);
+    }
+    /**
+     * Add express middleware
+     *
+     * @param expressMiddleware
+     */
+    addMiddleware(expressMiddleware) {
+        this.app.use(expressMiddleware);
     }
     /**
      * Start server to listen on the provided port

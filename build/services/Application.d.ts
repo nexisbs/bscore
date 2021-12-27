@@ -17,6 +17,12 @@ export default class Application {
      */
     createRoute(basePath: string, routerFn: (router: Router) => void): void;
     /**
+     * Add express middleware
+     *
+     * @param expressMiddleware
+     */
+    addMiddleware(expressMiddleware: any): void;
+    /**
      * Start server to listen on the provided port
      *
      * @param options

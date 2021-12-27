@@ -13,10 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const __1 = require("..");
+const joi_1 = __importDefault(require("joi"));
 const supertest_1 = __importDefault(require("supertest"));
+const services_1 = require("../services");
+const ServiceManager_1 = __importDefault(require("../services/ServiceManager"));
 describe('Application service', () => {
     it('Should start http server and create route', () => __awaiter(void 0, void 0, void 0, function* () {
-        let expressServer = yield __1.ServiceManager.get(__1.SERVICE_APPLICATION);
+        let expressServer = yield ServiceManager_1.default.get(services_1.SERVICE_APPLICATION);
         expressServer === null || expressServer === void 0 ? void 0 : expressServer.createRoute('/test', (router) => {
             router.get('/test', (req, res) => {
                 res.json({});
@@ -28,5 +31,17 @@ describe('Application service', () => {
         yield (0, supertest_1.default)(expressServer === null || expressServer === void 0 ? void 0 : expressServer.getExpressApplication())
             .get("/test/test")
             .expect(200);
+    }));
+    it('Should test validation middleware', () => __awaiter(void 0, void 0, void 0, function* () {
+        let expressServer = yield ServiceManager_1.default.get(services_1.SERVICE_APPLICATION);
+        expressServer === null || expressServer === void 0 ? void 0 : expressServer.createRoute('/test', (router) => {
+            router.post('/test', (0, __1.ValidareMiddleware)(joi_1.default.object({ username: joi_1.default.string() })), (req, res) => {
+                res.json({});
+            });
+        });
+        yield (0, supertest_1.default)(expressServer === null || expressServer === void 0 ? void 0 : expressServer.getExpressApplication())
+            .post("/test/test")
+            .send({ username: 2 })
+            .expect(500);
     }));
 });

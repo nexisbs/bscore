@@ -7,6 +7,9 @@ export default class Application {
 
     constructor(){
         this.app = express();
+
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: false }));
     }
 
     /**
@@ -31,6 +34,16 @@ export default class Application {
         routerFn(router);
 
         this.app.use(basePath, router);
+    }
+
+    /**
+     * Add express middleware
+     * 
+     * @param expressMiddleware 
+     */
+    public addMiddleware(expressMiddleware){
+
+        this.app.use(expressMiddleware);
     }
 
     /**

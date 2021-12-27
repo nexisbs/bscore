@@ -48,7 +48,7 @@ class ServiceManager {
                 }
                 return ServiceManager.services[serviceName];
             }
-            return null;
+            throw new Error("Missing service with name " + serviceName);
         });
     }
 }

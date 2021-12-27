@@ -9,7 +9,7 @@ describe('Application service', () => {
 
         let expressServer = await ServiceManager.get<SERVICE_APPLICATION>(SERVICE_APPLICATION);
 
-        expressServer?.createRoute('/test', ( router ) => {
+        expressServer.createRouter('/test', ( router ) => {
 
             router.get('/test', (req, res) => {
                 res.json({});
@@ -30,7 +30,7 @@ describe('Application service', () => {
 
         let expressServer = await ServiceManager.get<SERVICE_APPLICATION>(SERVICE_APPLICATION);
 
-        expressServer?.createRoute('/test', ( router ) => {
+        expressServer.createRouter('/test', ( router ) => {
 
             router.post('/test', ValidareMiddleware(joi.object({username: joi.string()})) , (req, res) => {
                 res.json({});

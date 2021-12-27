@@ -28,7 +28,7 @@
      * 
      * @param serviceName - the name of the service. All services begin with `SERVICE_`
      */
-    public static async get<T, P = null>(serviceName: string, params?: P ): Promise<T | null> {
+    public static async get<T, P = null>(serviceName: string, params?: P ): Promise<T> {
         // if the service is singleton and it is instantiated already, return it
         if (ServiceManager.lazyLoadedServices[serviceName] !== void (0)) {
             return ServiceManager.lazyLoadedServices[serviceName];
@@ -51,6 +51,6 @@
             return ServiceManager.services[serviceName];
         }
 
-        return null;
+        throw new Error("Missing service with name " + serviceName);
     }
 }

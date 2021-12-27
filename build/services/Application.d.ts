@@ -12,10 +12,20 @@ export default class Application {
      * Add route to the express server.
      * This should be called before calling `startServer` method
      *
+     * example usage:
+     * ```
+     * expressServer.createRoute('/test', ( router ) => {
+
+            router.get('/test', (req, res) => {
+                res.json({});
+            })
+       })
+     * ```
+     *
      * @param basePath
      * @param routerFn
      */
-    createRoute(basePath: string, routerFn: (router: Router) => void): void;
+    createRouter(basePath: string, routerFn: (router: Router) => void): void;
     /**
      * Add express middleware
      *

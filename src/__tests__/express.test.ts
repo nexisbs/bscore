@@ -23,7 +23,6 @@ describe('Application service', () => {
         await supertest(expressServer?.getExpressApplication())
             .get("/test/test")
             .expect(200);
-
     })
 
     it('Should test validation middleware', async () => {
@@ -41,8 +40,6 @@ describe('Application service', () => {
             .post("/test/test")
             .send({ username: 2 })
             .expect(500);
- 
-
 
     })
 })

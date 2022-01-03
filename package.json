@@ -6,10 +6,10 @@
   "types": "./build/index.d.ts",
   "scripts": {
     "clean": "del ./build/*",
-    "build": "npm run clean && tsc --watch",
+    "build": "npm run clean && tsc",
     "nodemon": "nodemon ./build/index.js",
-    "dev": "npm run build & npm run nodemon",
-    "test": "npm run build & jest --watchAll"
+    "dev": "npm run build && npm run nodemon & tsc --watch",
+    "test": "npm run build && jest --watchAll & tsc --watch"
   },
   "keywords": [],
   "jest": {
@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "express": "^4.17.2",
-    "joi": "^17.5.0"
+    "joi": "^17.5.0",
+    "mongodb": "^4.2.2"
   }
 }
